@@ -66,69 +66,14 @@ overseas_ai_directories:
     auto: yes
     lang: en
 
-  - name: AIToolMall
-    submit_url: https://aitoolmall.com/submit/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: AI Finder
-    submit_url: https://ai-finder.net/
-    type: form
-    auto: yes
-    lang: en
-
   - name: AIFINDY
     submit_url: https://aifindy.com/contacto/publica-tu-ia-en-aifindy
     type: form
     auto: yes
     lang: en
 
-  - name: AITopTools
-    submit_url: https://aitoptools.com/login?redirect_to=submit
-    type: form
-    auto: manual
-    lang: en
-    notes: Requires login
-
-  - name: AllThingsAI
-    submit_url: https://allthingsai.com
-    type: form
-    auto: yes
-    lang: en
-
-  - name: AiDude
-    submit_url: https://aidude.pro/submit-your-tool
-    type: form
-    auto: yes
-    lang: en
-
-  - name: AI Homes
-    submit_url: https://aihomes.io/submit/submit-tool
-    type: form
-    auto: yes
-    lang: en
-
   - name: AI Library
     submit_url: https://library.phygital.plus/tool-submission
-    type: form
-    auto: yes
-    lang: en
-
-  - name: AiSuperSmart
-    submit_url: https://www.aisupersmart.com/submit-tool/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Ai Business Tool
-    submit_url: https://aibusinesstool.com/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: AI Tool For Business
-    submit_url: https://aitoolforbusiness.com/submit-ai-tool/
     type: form
     auto: yes
     lang: en
@@ -140,13 +85,6 @@ overseas_ai_directories:
     lang: en
     status: dead
     notes: "403 as of 2026-03"
-
-  - name: AI-Hunter.io
-    submit_url: https://ai-hunter.io/submit-ai-tool/
-    type: form
-    auto: yes
-    lang: en
-    notes: 2000+ AI tools
 
   - name: AIToolGuru
     submit_url: https://aitoolguru.com/
@@ -161,13 +99,6 @@ overseas_ai_directories:
     lang: en
     status: dead
     notes: "404 as of 2026-03"
-
-  - name: AILib
-    submit_url: https://ailib.ru/en/add-ai/
-    type: form
-    auto: yes
-    lang: en
-    notes: Russian AI directory with English interface
 
   - name: AiToolkit
     submit_url: https://www.aitoolkit.org/submit
@@ -184,12 +115,6 @@ overseas_ai_directories:
     lang: en
     status: dead
     notes: "404 as of 2026-03"
-
-  - name: AIWikiTools
-    submit_url: https://aiwikitools.com/submit-a-tool/
-    type: form
-    auto: yes
-    lang: en
 
   - name: AI Worthy
     submit_url: https://aiworthy.org/submit-tool/
@@ -235,18 +160,6 @@ overseas_ai_directories:
     status: dead
     notes: "404 as of 2026-03"
 
-  - name: ChatGPTDemo.pro
-    submit_url: https://chatgptdemo.pro/submit-tool/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: DigiProToolz
-    submit_url: https://digiprotoolz.com/contact-us/
-    type: form
-    auto: yes
-    lang: en
-
   - name: DropYourAI
     submit_url: https://www.dropyourai.com/submit-tool
     type: form
@@ -261,12 +174,6 @@ overseas_ai_directories:
     status: dead
     notes: "404 as of 2026-03"
 
-  - name: Draeno.io
-    submit_url: https://draeno.io/submit-a-tool/
-    type: form
-    auto: yes
-    lang: en
-
   - name: Every AI
     submit_url: https://every-ai.com/submit-tool/
     type: form
@@ -274,12 +181,6 @@ overseas_ai_directories:
     lang: en
     status: dead
     notes: "404 as of 2026-03"
-
-  - name: Future AGI Tools
-    submit_url: https://www.futureagitools.com/submit-a-site
-    type: form
-    auto: yes
-    lang: en
 
   - name: Free AI Tools Directory
     submit_url: https://free-ai-tools-directory.com/submit-request/
@@ -295,36 +196,6 @@ overseas_ai_directories:
     status: dead
     notes: "404 as of 2026-03"
 
-  - name: findcool.tools
-    submit_url: https://www.findcool.tools/submit-tool
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Full Stack AI
-    submit_url: https://fullstackai.co/submit-a-tool/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: PoweredbyAI
-    submit_url: https://poweredbyai.app/submit-tool
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Paxi
-    submit_url: https://paxi.ai/submit
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Human Alternative
-    submit_url: https://www.humanalternative.com/submit-resource/submit-a-tool
-    type: form
-    auto: yes
-    lang: en
-
   - name: Human or Not
     submit_url: https://www.humanornot.co/submit-tool
     type: form
@@ -337,30 +208,6 @@ overseas_ai_directories:
     auto: yes
     lang: en
 
-  - name: Gate2AI
-    submit_url: https://www.gate2ai.com/zh-cn/submit-tool
-    type: form
-    auto: yes
-    lang: multi
-
-  - name: Supertools
-    submit_url: https://supertools.therundown.ai/submit
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Startup AI tools
-    submit_url: https://www.startupaitools.com/submit-ai-tools/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: SaaSBaba
-    submit_url: https://saasbaba.com/add-ai-tool/
-    type: form
-    auto: yes
-    lang: en
-
   - name: SEOFAI
     submit_url: https://seofai.com/submit-tool/
     type: form
@@ -368,49 +215,6 @@ overseas_ai_directories:
     lang: en
     status: dead
     notes: "404 as of 2026-03"
-
-  - name: SpotTheAI
-    submit_url: https://www.spottheai.com/submit
-    type: form
-    auto: yes
-    lang: en
-    notes: 5000+ AI products
-
-  - name: Nextool AI
-    submit_url: https://www.nextool.ai/submit-a-tool
-    type: form
-    auto: yes
-    lang: en
-
-  - name: OpenFuture AI
-    submit_url: https://openfuture.ai/zh/submit-tool
-    type: form
-    auto: yes
-    lang: multi
-
-  - name: TopApps.Ai
-    submit_url: https://topapps.ai/submit
-    type: form
-    auto: yes
-    lang: en
-
-  - name: ToolHunter.ai
-    submit_url: https://www.toolhunter.ai/submit-a-tool
-    type: form
-    auto: yes
-    lang: en
-
-  - name: ToolPilot
-    submit_url: https://www.toolpilot.ai/pages/submit-your-ai-tool
-    type: form
-    auto: yes
-    lang: en
-
-  - name: ToolScout
-    submit_url: https://toolscout.ai/submit
-    type: form
-    auto: yes
-    lang: en
 
   - name: Toolbase AI
     submit_url: https://www.toolbase.ai/toolbase/submit-tool
@@ -420,24 +224,6 @@ overseas_ai_directories:
     status: dead
     notes: "404 as of 2026-03"
 
-  - name: ToolsAI.net
-    submit_url: https://toolsai.net/add-listing/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: TrackBes
-    submit_url: https://trackbes.com/submit-tool
-    type: form
-    auto: yes
-    lang: en
-
-  - name: ToolStory.net
-    submit_url: https://toolsstory.net/add-listing/
-    type: form
-    auto: yes
-    lang: en
-
   - name: TheToolBus.ai
     submit_url: https://www.thetoolbus.ai/submit-tools
     type: form
@@ -445,18 +231,6 @@ overseas_ai_directories:
     lang: en
     status: dead
     notes: "404 as of 2026-03"
-
-  - name: tools-ai.online
-    submit_url: https://www.tools-ai.online/tool-submit
-    type: form
-    auto: yes
-    lang: en
-
-  - name: The AI Warehouse
-    submit_url: https://www.thewarehouse.ai/product-submission
-    type: form
-    auto: yes
-    lang: en
 
   - name: VTeam
     submit_url: https://vteam.ai/submit-tool
@@ -466,12 +240,6 @@ overseas_ai_directories:
     status: dead
     notes: "404 as of 2026-03"
 
-  - name: Interested In AI
-    submit_url: https://www.interestedinai.com/submit-tool
-    type: form
-    auto: yes
-    lang: en
-
   - name: Neil Patel AI Tools
     submit_url: https://aitools.neilpatel.com/submit/
     type: form
@@ -479,12 +247,6 @@ overseas_ai_directories:
     lang: en
     status: dead
     notes: "403 as of 2026-03"
-
-  - name: NextGenTools
-    submit_url: https://nextgentools.me/submit-your-tool
-    type: form
-    auto: yes
-    lang: en
 
   - name: YourAITool
     submit_url: https://youraitool.com/submit-tool
@@ -500,13 +262,6 @@ overseas_ai_directories:
     auto: yes
     lang: en
 
-  - name: Free AI Tool
-    submit_url: https://freeaitool.ai/submit
-    type: form
-    auto: yes
-    lang: en
-    notes: 24h fast review
-
   - name: aitoolslist.io
     submit_url: https://aitoolslist.io/submit-ai-tool/
     type: form
@@ -518,13 +273,6 @@ overseas_ai_directories:
     type: form
     auto: yes
     lang: en
-
-  - name: AILibri
-    submit_url: https://ailibri.com/addAi
-    type: form
-    auto: yes
-    lang: en
-    notes: Russian AI directory
 
   - name: AI Scout
     submit_url: https://aiscout.net/
@@ -541,43 +289,6 @@ overseas_ai_directories:
     lang: en
     status: dead
     notes: "429 as of 2026-03"
-
-  - name: aitoolhunt
-    submit_url: https://www.aitoolhunt.com/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Cipinet
-    submit_url: https://www.cipinet.com/submit.php
-    type: form
-    auto: yes
-    lang: en
-
-  - name: A List Directory
-    submit_url: http://www.alistdirectory.com/submit.php
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Foundr.ai
-    submit_url: https://foundr.ai/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Tap4 AI
-    submit_url: https://tap4.ai/cn/submit
-    type: form
-    auto: yes
-    lang: multi
-    notes: Supports Chinese
-
-  - name: aiwith.me
-    submit_url: https://aiwith.me/zh/submit
-    type: form
-    auto: yes
-    lang: multi
 
   - name: ToolsFine
     submit_url: https://tally.so/r/wvB7Xg
@@ -599,12 +310,6 @@ overseas_general:
     lang: en
     notes: Major alternative software directory
 
-  - name: Alternative.me
-    submit_url: https://alternative.me/how-to/submit-software/
-    type: form
-    auto: yes
-    lang: en
-
   - name: App Rater
     submit_url: https://apprater.net/add/
     type: form
@@ -617,66 +322,8 @@ overseas_general:
     auto: yes
     lang: en
 
-  - name: All Startups
-    submit_url: http://www.allstartups.info/Startups/Submit
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Betalist
-    submit_url: https://betalist.com/users/sign_in
-    type: form
-    auto: manual
-    lang: en
-    notes: Requires login
-
-  - name: BufferApps
-    submit_url: https://bufferapps.com/beta-listing/new
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Changelog
-    submit_url: https://changelog.com/news/submit
-    type: form
-    auto: yes
-    lang: en
-    notes: Developer-focused, high quality
-
   - name: Digital Stuff We Love
     submit_url: https://digitalstuffwelove.org.nz/submit-tool
-    type: form
-    auto: yes
-    lang: en
-
-  - name: DataTau
-    submit_url: https://datatau.net/
-    type: form
-    auto: yes
-    lang: en
-    notes: HN clone for data science
-
-  - name: 10words
-    submit_url: https://10words.io/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: MicroLaunch
-    submit_url: https://microlaunch.net/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Fiddy
-    submit_url: https://fiddy.co/
-    type: form
-    auto: yes
-    lang: en
-    notes: Weekly indie hacker ranking
-
-  - name: Fund a Maker
-    submit_url: https://fundamaker.com/
     type: form
     auto: yes
     lang: en
@@ -688,61 +335,6 @@ overseas_general:
     lang: en
     status: dead
     notes: "404 as of 2026-03"
-
-  - name: Joinly
-    submit_url: https://www.joinly.xyz/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: KillerStartups
-    submit_url: https://www.killerstartups.com/submit-startup/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: PitchWall
-    submit_url: https://pitchwall.co/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Prime Indies
-    submit_url: https://primeindies.com/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Toools.design
-    submit_url: https://toools.design/
-    type: form
-    auto: yes
-    lang: en
-    notes: Design tools, 1500+ resources
-
-  - name: TechPluto
-    submit_url: https://www.techpluto.com/submit-a-startup/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: The Startup Pitch
-    submit_url: https://thestartuppitch.com/post-a-pitch/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Top Best Alternatives
-    submit_url: https://www.topbestalternatives.com/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Launched!
-    submit_url: https://launched.io/
-    type: form
-    auto: yes
-    lang: en
 
   - name: Launching Next
     submit_url: https://www.launchingnext.com/submit/
@@ -766,12 +358,6 @@ overseas_general:
     auto: yes
     lang: en
 
-  - name: StartupRanking
-    submit_url: https://www.startupranking.com/
-    type: form
-    auto: yes
-    lang: en
-
   - name: Startup Stash
     submit_url: https://startupstash.com/add-listing/
     type: form
@@ -779,19 +365,6 @@ overseas_general:
     lang: en
     status: dead
     notes: "403 as of 2026-03"
-
-  - name: StartupBase
-    submit_url: https://startupbase.io/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: SourceForge
-    submit_url: https://sourceforge.net/software/vendors/new
-    type: form
-    auto: yes
-    lang: en
-    notes: 20M monthly users
 
   - name: PayOnceApps
     submit_url: https://payonceapps.com/add-your-app/
@@ -801,19 +374,6 @@ overseas_general:
     status: dead
     notes: "404 as of 2026-03"
 
-  - name: techdirectory.io
-    submit_url: https://www.techdirectory.io/get-listed
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Toolbase.io
-    submit_url: https://form.typeform.com/to/LQcTJr
-    type: form
-    auto: yes
-    lang: en
-    notes: Typeform
-
   - name: Tool Finder
     submit_url: https://toolfinder.co/submit-your-tool
     type: form
@@ -821,31 +381,6 @@ overseas_general:
     lang: en
     status: dead
     notes: "404 as of 2026-03"
-
-  - name: TechFaster
-    submit_url: http://techfaster.com/submit-your-company/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Unloc
-    submit_url: https://www.unloc.tools/submit-tool
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Wewaat
-    submit_url: https://www.wewaat.com/submitnewtool
-    type: form
-    auto: yes
-    lang: en
-    notes: No-code tools
-
-  - name: Indie Tools
-    submit_url: https://indietools.co/
-    type: form
-    auto: yes
-    lang: en
 
   - name: No Code Family
     submit_url: https://nocodefamily.com/submit-tool
@@ -862,25 +397,6 @@ overseas_general:
     lang: en
     status: dead
     notes: "403 as of 2026-03"
-
-  - name: MakerPeak
-    submit_url: https://makerpeak.com/sign-up?redirect=/profile/products/submit
-    type: form
-    auto: manual
-    lang: en
-    notes: Requires signup
-
-  - name: Simple Lister
-    submit_url: https://simplelister.com/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Launching Today
-    submit_url: https://www.launching.today/
-    type: form
-    auto: yes
-    lang: en
 
   - name: WebsiteHunt
     submit_url: https://www.websitehunt.co/
@@ -902,44 +418,12 @@ overseas_general:
     status: dead
     notes: "404 as of 2026-03"
 
-  - name: WhatLaunched.Today
-    submit_url: https://www.whatlaunched.today
-    type: form
-    auto: yes
-    lang: en
-
-  - name: bigstartups.co
-    submit_url: https://bigstartups.co/overview/list-product
-    type: form
-    auto: yes
-    lang: en
-
-  - name: business-software.com
-    submit_url: https://www.business-software.com/add-your-product/
-    type: form
-    auto: yes
-    lang: en
-    notes: 4M+ annual tech buyers
-
-  - name: osalt.com
-    submit_url: https://osalt.com/suggest
-    type: form
-    auto: yes
-    lang: en
-    notes: Open source alternatives
-
   - name: Broadwise.org
     submit_url: https://broadwise.org/t/how-to-promote-your-startup-on-broadwise-org/125
     type: form
     auto: manual
     lang: en
     notes: Community, needs account
-
-  - name: ASR
-    submit_url: https://www.activesearchresults.com/addwebsite.php
-    type: form
-    auto: yes
-    lang: en
 
   - name: AppsThunder
     submit_url: https://appsthunder.com/submit-your-app/
@@ -955,12 +439,6 @@ overseas_general:
     status: dead
     notes: "405 as of 2026-03"
 
-  - name: insanelycooltools
-    submit_url: https://www.insanelycooltools.com/submit
-    type: form
-    auto: yes
-    lang: en
-
   - name: findatool
     submit_url: https://www.findatool.io/add-a-tool
     type: form
@@ -968,19 +446,6 @@ overseas_general:
     lang: en
     status: dead
     notes: "403 as of 2026-03"
-
-  - name: 700.tools
-    submit_url: https://700.tools/add
-    type: form
-    auto: yes
-    lang: en
-
-  - name: once.tools
-    submit_url: https://once.tools/
-    type: form
-    auto: yes
-    lang: en
-    notes: One-time payment software
 
 # ============================================================
 # Overseas Web Directories / 海外网址目录站
@@ -995,12 +460,6 @@ overseas_directories:
     lang: en
     status: dead
     notes: "403 as of 2026-03"
-
-  - name: Dizila
-    submit_url: https://www.dizila.com/submit
-    type: form
-    auto: yes
-    lang: en
 
   - name: DesignRush
     submit_url: https://www.designrush.com/submit/agency
@@ -1051,50 +510,14 @@ overseas_directories:
     lang: en
     notes: Web design showcase
 
-  - name: 01webdirectory
-    submit_url: https://www.01webdirectory.com/frmPreSubmit.aspx
-    type: form
-    auto: yes
-    lang: en
-
-  - name: 247WebDirectory
-    submit_url: https://www.247webdirectory.com/
-    type: form
-    auto: yes
-    lang: en
-
   - name: 9Sites.net
     submit_url: https://www.9sites.net/addurl.php
     type: form
     auto: yes
     lang: en
 
-  - name: ABC Directory
-    submit_url: https://www.abc-directory.com/submiturl
-    type: form
-    auto: yes
-    lang: en
-
-  - name: All Business Directory
-    submit_url: https://www.allbusinessdirectory.biz/directory.php?page=submission-guidelines
-    type: form
-    auto: yes
-    lang: en
-
   - name: All States USA Directory
     submit_url: https://www.allstatesusadirectory.com/submit.php
-    type: form
-    auto: yes
-    lang: en
-
-  - name: BusinessSeek.biz
-    submit_url: https://www.businessseek.biz/page.php?page=submission-policy
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Submission Web Directory
-    submit_url: https://www.submissionwebdirectory.com/
     type: form
     auto: yes
     lang: en
@@ -1117,20 +540,8 @@ overseas_directories:
     auto: yes
     lang: en
 
-  - name: SitesWebdirectory
-    submit_url: https://www.siteswebdirectory.com/submit.php
-    type: form
-    auto: yes
-    lang: en
-
   - name: Marketing Internet Directory
     submit_url: https://www.marketinginternetdirectory.com/submit.php
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Promote Business Directory
-    submit_url: https://www.promotebusinessdirectory.com/submit.php
     type: form
     auto: yes
     lang: en
@@ -1141,24 +552,12 @@ overseas_directories:
     auto: yes
     lang: en
 
-  - name: GainWeb.org
-    submit_url: https://gainweb.org/
-    type: form
-    auto: yes
-    lang: en
-
   - name: Jayde
     submit_url: https://www.jayde.com/submit.html
     type: form
     auto: yes
     lang: en
     notes: B2B search engine
-
-  - name: Free Directory
-    submit_url: https://www.directory-free.com/submit/submit.php
-    type: form
-    auto: yes
-    lang: en
 
   - name: Free PR Web Directory
     submit_url: https://www.freeprwebdirectory.com/submit.php
@@ -1180,24 +579,6 @@ overseas_directories:
     status: dead
     notes: "500 as of 2026-03"
 
-  - name: TXTLinks
-    submit_url: https://www.txtlinks.com/sug_url.php?cat_id=0
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Tsection
-    submit_url: https://www.tsection.com/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Thales Directory
-    submit_url: https://thalesdirectory.com/submit/
-    type: form
-    auto: yes
-    lang: en
-
   - name: Quality Internet Directory
     submit_url: https://www.qualityinternetdirectory.com/submit.php
     type: form
@@ -1216,36 +597,12 @@ overseas_directories:
     auto: yes
     lang: en
 
-  - name: World Web Directory
-    submit_url: https://www.worldweb-directory.com/add.php
-    type: form
-    auto: yes
-    lang: en
-
-  - name: Submit.biz
-    submit_url: https://www.submit.biz/
-    type: form
-    auto: yes
-    lang: en
-
-  - name: 5118.link
-    submit_url: http://www.5118.link/article/22.html
-    type: form
-    auto: yes
-    lang: zh
-    notes: Chinese directory, 1-2 day review
-
 # ============================================================
 # Chinese AI Directories / 国内AI导航站
 # ============================================================
 chinese_ai_directories:
 
-  - name: 2AGI
-    submit_url: https://2agi.net/zh/submit
-    type: form
-    auto: yes
-    lang: zh
-
+  
   - name: AIHub
     submit_url: https://www.aihub.cn/write
     type: form
@@ -1254,51 +611,8 @@ chinese_ai_directories:
     status: dead
     notes: "403 as of 2026-03"
 
-  - name: ai-bot.cn
-    submit_url: https://tally.so/r/wkeKz1
-    type: form
-    auto: yes
-    lang: zh
-    notes: Quality AI tools only, Tally form
-
-  - name: AI NAV
-    submit_url: https://www.ainavpro.com/contribute
-    type: form
-    auto: yes
-    lang: zh
-
-  - name: AI大师
-    submit_url: https://www.aidashi.cn/sl
-    type: form
-    auto: yes
-    lang: zh
-
-  - name: AI智式
-    submit_url: https://aiwaytools.com/%e7%bd%91%e5%9d%80%e6%8f%90%e4%ba%a4/
-    type: form
-    auto: yes
-    lang: zh
-
-  - name: AI工具箱 (aitool123)
-    submit_url: https://www.aitool123.cc/%E6%8F%90%E4%BA%A4%E6%94%B6%E5%BD%95/
-    type: form
-    auto: yes
-    lang: zh
-
   - name: 工具达人AI导航
     submit_url: http://toolsdar.mikecrm.com/nix44in
-    type: form
-    auto: yes
-    lang: zh
-
-  - name: 映技派
-    submit_url: https://www.yjpoo.com/submit-ai-tool/
-    type: form
-    auto: yes
-    lang: zh
-
-  - name: 深度AI导航
-    submit_url: https://www.deepdhai.com/submit
     type: form
     auto: yes
     lang: zh
@@ -1310,24 +624,6 @@ chinese_ai_directories:
     lang: zh
     status: dead
     notes: "403 as of 2026-03"
-
-  - name: 懂AI
-    submit_url: https://www.dongaiapp.com/sub
-    type: form
-    auto: yes
-    lang: zh
-
-  - name: 南城FE AI导航
-    submit_url: https://nancheng.fun/contribute
-    type: form
-    auto: yes
-    lang: zh
-
-  - name: zhexieai
-    submit_url: https://zhexieai.com/%e6%8f%90%e4%ba%a4%e7%bd%91%e5%9d%80
-    type: form
-    auto: yes
-    lang: zh
 
   - name: Cooltools
     submit_url: https://backdata.net/submit-site.html
@@ -1341,18 +637,6 @@ chinese_ai_directories:
     auto: yes
     lang: zh
 
-  - name: 未来百科
-    submit_url: https://nav.6aiq.com/contribute
-    type: form
-    auto: yes
-    lang: zh
-
-  - name: 123AI导航
-    submit_url: https://www.fsl123.com/contribute
-    type: form
-    auto: yes
-    lang: zh
-
   - name: AI导航猫
     submit_url: https://www.h1z1tmc.com/submit
     type: form
@@ -1360,12 +644,6 @@ chinese_ai_directories:
     lang: zh
     status: dead
     notes: "500 as of 2026-03"
-
-  - name: AIGC工具导航
-    submit_url: https://www.aigc.cn/submit
-    type: form
-    auto: yes
-    lang: zh
 
   - name: AiTime.Space
     submit_url: https://aitime.space/submit
@@ -1375,19 +653,6 @@ chinese_ai_directories:
     status: dead
     notes: "404 as of 2026-03"
 
-  - name: AI导航网 (94kan)
-    submit_url: https://ai.94kan.cn/submit
-    type: form
-    auto: yes
-    lang: zh
-
-  - name: AIGC便利店
-    submit_url: https://aigclist.com/submit-ai-tools-free/
-    type: form
-    auto: yes
-    lang: zh
-    notes: 4000+ AI tools
-
   - name: Jay的资源库
     submit_url: https://www.lovejay.top/%e7%bd%91%e7%ab%99%e6%8a%95%e7%a8%bf
     type: form
@@ -1395,12 +660,6 @@ chinese_ai_directories:
     lang: zh
     status: dead
     notes: "404 as of 2026-03"
-
-  - name: 知否Box AI导航
-    submit_url: https://www.zhifoubox.com/submission
-    type: form
-    auto: yes
-    lang: zh
 
   - name: 牛牛导航
     submit_url: https://aoh.cc/contribute
@@ -1431,18 +690,6 @@ chinese_ai_directories:
     lang: zh
     notes: 8187+ products, 24h review
 
-  - name: 老北鼻AI导航
-    submit_url: https://lbbai.com/contribute
-    type: form
-    auto: yes
-    lang: zh
-
-  - name: AI工具箱 (ailookme)
-    submit_url: https://www.ailookme.com/%e7%bd%91%e5%9d%80%e6%8f%90%e4%ba%a4
-    type: form
-    auto: yes
-    lang: zh
-
   - name: AI驿站
     submit_url: https://www.51aiyz.com/about
     type: form
@@ -1451,70 +698,18 @@ chinese_ai_directories:
     status: dead
     notes: "403 as of 2026-03"
 
-  - name: AI导航网 (aiopenminds)
-    submit_url: https://jinshuju.net/f/BhEFyJ
-    type: form
-    auto: yes
-    lang: zh
-    notes: 金数据 form
-
 # ============================================================
 # Chinese General Sites / 国内综合网站
 # Product directories, developer communities
 # ============================================================
 chinese_general:
 
-  - name: ABABTOOLS
-    submit_url: https://ababtools.com/?post=1292
-    type: form
-    auto: yes
-    lang: zh
-    notes: Free developer product listing
-
-  - name: 新趣集
-    submit_url: https://xinquji.com/
-    type: form
-    auto: yes
-    lang: zh
-    notes: ProductHunt-like for China
-
+  
   - name: Mergeek
     submit_url: https://mergeek.com/publish_project
     type: form
     auto: yes
     lang: zh
-
-  - name: 挖互联网
-    submit_url: https://tigg.cc/share
-    type: form
-    auto: yes
-    lang: zh
-    notes: Free innovative tools only
-
-  - name: 线圈
-    submit_url: https://xquan.net/help?tab=submit-guide
-    type: form
-    auto: yes
-    lang: zh
-
-  - name: 一网一匠
-    submit_url: https://ywyj.cn/
-    type: form
-    auto: yes
-    lang: zh
-
-  - name: Solo 社区
-    submit_url: https://solo.xin/product
-    type: form
-    auto: yes
-    lang: zh
-
-  - name: 电商导航网
-    submit_url: https://www.dianshangdaohang.cn/shoulu/
-    type: form
-    auto: yes
-    lang: zh
-    notes: E-commerce only
 
   - name: 名站在线
     submit_url: http://www.fwol.cn/infos_add.php
@@ -1542,19 +737,6 @@ chinese_general:
     status: dead
     notes: "412 as of 2026-03"
 
-  - name: 笛卡
-    submit_url: https://dizkaz.com/
-    type: form
-    auto: yes
-    lang: zh
-
-  - name: FUUN.FUN
-    submit_url: https://fuun.fun/talk.html
-    type: form
-    auto: yes
-    lang: zh
-    notes: Fun/quirky web apps only
-
 # ============================================================
 # Communities & Forums (manual only) / 社区论坛（需手动）
 # These need accounts, human interaction, or specific formats
@@ -1580,13 +762,6 @@ communities_manual:
     type: listing
     auto: manual
     lang: en
-
-  - name: Uneed
-    submit_url: https://www.uneed.best/promote-your-tool
-    type: form
-    auto: yes
-    lang: en
-    notes: Free but queued
 
   - name: Indie Hackers
     submit_url: https://www.indiehackers.com/products
@@ -1740,3 +915,241 @@ reddit:
     type: article
     auto: manual
     lang: en
+
+# ============================================================
+# General & Agency Directories (from SEO Mode sheet)
+# Source: Google Sheet "SEO Mode ALL DATABASE" — Pricing: Free, no login noted
+# ============================================================
+sheet_general_directories:
+
+  
+  - name: "ExactSeek"
+    submit_url: https://www.exactseek.com/add.html
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 70; nofollow; 22.8K visits/mo"
+
+  - name: "Link Centre"
+    submit_url: https://www.linkcentre.com/addurl/
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 73; dofollow; 34.7K visits/mo"
+
+  - name: "Post Free Directory"
+    submit_url: https://postfreedirectory.com/submit
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 16; dofollow; 1.6K visits/mo"
+
+  - name: "AI123.cn"
+    submit_url: https://ai123.cn/contribute/
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; dofollow"
+
+  - name: "Websquash"
+    submit_url: https://www.websquash.com/cgi-bin/search/search.pl?Mode=AnonAdd
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 65; dofollow"
+
+# ============================================================
+# AI / SaaS / App Directories (from SEO Mode sheet)
+# Source: Google Sheet "SEO Mode ALL DATABASE" — Pricing: Free, no login noted
+# ============================================================
+sheet_ai_saas_directories:
+
+  
+  - name: "Fivetaco"
+    submit_url: https://fivetaco.com/submit
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 34; dofollow; 82.9K visits/mo"
+
+  - name: "10015"
+    submit_url: https://10015.io/product-finder/submit
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 53; nofollow; 679.1K visits/mo"
+
+  - name: "BAI.tools"
+    submit_url: https://bai.tools/submit-ai-tools
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 47; dofollow; 111.4K visits/mo"
+
+  - name: "AI Startups"
+    submit_url: https://marsx.dev/ai-startups/
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 44; nofollow; 10.9K visits/mo"
+
+  - name: "StartupTracker"
+    submit_url: https://startuptracker.io/crowdsourcing/
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 44; dofollow; 3.4K visits/mo"
+
+  - name: "ScriptByAI"
+    submit_url: https://www.scriptbyai.com/submit-resources/
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 50; nofollow; 32K visits/mo"
+
+  - name: "AI NavHub"
+    submit_url: https://ainavhub.com/submit/
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; dofollow"
+
+  - name: "AlphaDigits"
+    submit_url: https://alphadigits.com/submit-app-for-review/
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; dofollow; 1.2K visits/mo"
+
+  - name: "IABOXTOOL"
+    submit_url: https://iaboxtool.es/enviar-tu-aporte/
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; dofollow; 4.8K visits/mo"
+
+  - name: "ai.dreamthere.cn"
+    submit_url: https://ai.dreamthere.cn/site/submit
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; dofollow; 5.2K visits/mo"
+
+  - name: "The AI Navigator"
+    submit_url: https://www.theainavigator.com/submit-an-ai-tool/
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 20; dofollow; 24.4K visits/mo"
+
+  - name: "AINave"
+    submit_url: https://www.ainave.com/submit/tools
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 25; dofollow; 2.4K visits/mo"
+
+  - name: "VerySaaS"
+    submit_url: https://www.verysaas.io/contact
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; dofollow; 19.4K visits/mo"
+
+  - name: "AItoGrow"
+    submit_url: https://aitogrow.com/#send-your-tool
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 15; dofollow; 568 visits/mo"
+
+  - name: "Landing Page Tools"
+    submit_url: https://tools.landin.page/submittools
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; dofollow"
+
+  - name: "FindTools.ai"
+    submit_url: https://www.findtools.ai/submit
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 0; dofollow; 213 visits/mo"
+
+  - name: "ListedAI"
+    submit_url: https://www.listedai.co/submit
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; dofollow; 11.1K visits/mo"
+
+  - name: "FuturePedia"
+    submit_url: https://www.future-pedia.com/submit-tool/
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; nofollow; 17.9K visits/mo"
+
+  - name: "SaaS Radius"
+    submit_url: https://www.saasradius.com/add-listing
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; dofollow; 512 visits/mo"
+
+  - name: "Daily Zaps Picks"
+    submit_url: https://hub.dailyzaps.com/submit
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 10; dofollow; 143 visits/mo"
+
+  - name: "Businesstoolvault"
+    submit_url: https://www.businesstoolvault.com/
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; dofollow; 461 visits/mo"
+
+  - name: "InfraBase.ai"
+    submit_url: https://infrabase.ai/submit
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 13; dofollow; 1.1K visits/mo"
+
+  - name: "ToolAssistant"
+    submit_url: https://www.toolassistant.com/add-tool/
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; nofollow; 1.2K visits/mo"
+
+  - name: "Feedback Tools"
+    submit_url: https://feedbacktools.org/index.html
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR 2; nofollow"
+
+  - name: "AutoAI's"
+    submit_url: https://autoais.com/?U=Add
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; dofollow; 128 visits/mo"
+
+  - name: "Liteworker"
+    submit_url: https://liteworker.ai/about/#submit-tool
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; dofollow; 672 visits/mo"
+
+  - name: "AI Tools for 100x Growth"
+    submit_url: https://100xgrowth.ai/add_tool
+    type: form
+    auto: yes
+    lang: en
+    notes: "DR #N/A; nofollow; 5.1K visits/mo"

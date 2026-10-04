@@ -20,8 +20,23 @@ async function loadAdapter(site) {
   }
 }
 
+/**
+ * utm_source for a target: adapter name as-is, hostname for URL targets
+ * (a full URL inside a query string gets mangled/rejected by many forms)
+ */
+function utmSource(site) {
+  if (!site.startsWith('http')) return site;
+  try { return new URL(site).hostname.replace(/^www\./, ''); } catch { return site; }
+}
+
+/**
+ * Submit the product to one site.
+ * Returns { site, status: 'submitted' | 'failed' | 'dry-run', error?, url?, confirmation? }
+ * and never throws for a submission failure (only for programmer errors).
+ */
 export async function submit(site, opts) {
   const { config } = opts;
+  const label = opts.label ? ` (${opts.label})` : '';
 
   const adapter = await loadAdapter(site);
   if (!adapter) {
@@ -33,6 +48,7 @@ export async function submit(site, opts) {
     }
     console.log('\nOr pass a URL directly for generic submission:');
     console.log('  node src/cli.js submit https://example.com/submit --engine bb');
+    if (opts.noExit) return { site, status: 'failed', error: 'No adapter' };
     process.exit(1);
   }
 
@@ -44,14 +60,23 @@ export async function submit(site, opts) {
 
   const product = {
     ...config.product,
-    utm_url: utmUrl(config, site),
+    utm_url: utmUrl(config, utmSource(site)),
   };
 
-  console.log(`\n🚀 Submitting "${product.name}" to ${site}`);
+  // Recorded with every submission so runs for different products don't
+  // dedupe against each other
+  const extra = { product: config.product.url, ...(opts.name ? { name: opts.name } : {}) };
+
+  console.log(`\n🚀 Submitting "${product.name}" to ${site}${label}`);
   if (opts.dryRun) {
     console.log('  [DRY RUN] Would submit:', JSON.stringify(product, null, 2));
-    return;
+    return { site, status: 'dry-run' };
   }
+
+  const fail = (error) => {
+    recordSubmission(site, 'failed', { ...extra, error });
+    return { site, status: 'failed', error };
+  };
 
   // Pre-flight HTTP check — catch dead sites before launching browser
   const checkUrl = adapter._targetUrl || adapter.url;
@@ -66,13 +91,11 @@ export async function submit(site, opts) {
         if (res.status === 404) {
           console.error(`❌ ${checkUrl} returned 404 — submit page no longer exists.`);
           console.log('   Try visiting the site root to find the new submit URL.');
-          recordSubmission(site, 'failed', { error: '404 — submit page gone' });
-          return;
+          return fail('404 — submit page gone');
         }
         if (res.status >= 500) {
           console.error(`❌ ${checkUrl} returned ${res.status} — site appears down.`);
-          recordSubmission(site, 'failed', { error: `HTTP ${res.status}` });
-          return;
+          return fail(`HTTP ${res.status}`);
         }
       }
     } catch {}
@@ -81,13 +104,15 @@ export async function submit(site, opts) {
   try {
     const result = await adapter.submit(product, config);
     recordSubmission(site, 'submitted', {
+      ...extra,
       url: result?.url,
       confirmation: result?.confirmation,
     });
     console.log(`✅ Submitted to ${site}!`);
     if (result?.confirmation) console.log(`  Confirmation: ${result.confirmation}`);
+    return { site, status: 'submitted', url: result?.url, confirmation: result?.confirmation };
   } catch (e) {
-    recordSubmission(site, 'failed', { error: e.message });
     console.error(`❌ Failed: ${e.message}`);
+    return fail(e.message);
   }
 }

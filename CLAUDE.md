@@ -54,6 +54,9 @@ node src/cli.js submit futuretools --engine bb
 |---------|-------------|
 | `node src/cli.js submit <site>` | Submit to a known site adapter |
 | `node src/cli.js submit <url>` | Generic submission to any directory URL |
+| `node src/cli.js run` | Batch: never-attempted sites in `targets.yaml` (skips already-failed). Options: `--category`, `--lang`, `--limit N`, `--interval ms`, `--retry`, `--retry-failed`, `--dry-run` |
+| `node src/cli.js prune --delete --sheet-only` | Remove newly imported login/paid directories from `targets.yaml` |
+| `node src/cli.js report [--since DATE]` | Rebuild a success/failure report from `submissions.yaml` (source of truth) — use after an interrupted run |
 | `node src/cli.js scout <url> --deep` | Discover form fields on a new site |
 | `node src/cli.js awesome <repo>` | Generate awesome-list GitHub Issue body |
 | `node src/cli.js indexnow <url>` | Ping Bing/Yandex about new pages |
@@ -106,7 +109,7 @@ node src/cli.js submit https://some-directory.com/submit --engine bb
 | User says | You do |
 |-----------|--------|
 | "帮我提交外链" / "submit backlinks" | Check config.yaml exists → ask what sites → run submit |
-| "提交到所有免费站" / "submit to all free sites" | Filter targets.yaml for `auto: yes`, exclude `status: dead/paid`, submit one by one with pacing |
+| "提交到所有免费站" / "submit to all free sites" | `node src/cli.js run --engine bb` (filters `auto: yes`, skips dead/paid/already-submitted, paces between sites, reports successes) |
 | "这个站能提交吗" / "can I submit to this site?" | Run `scout <url> --deep` to check |
 | "提交情况" / "status" | Run `node src/cli.js status` |
 | "外链策略" / "backlink strategy" | Read Strategy section in README.md, give advice |

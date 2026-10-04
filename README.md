@@ -63,7 +63,10 @@ node src/cli.js submit https://any-site.com --engine bb
 ## Commands
 
 ```bash
-node src/cli.js submit <site-or-url>     # Submit to directory
+node src/cli.js submit <site-or-url>     # Submit to one directory
+node src/cli.js run [--limit N]          # Submit to untried sites (skips already-failed)
+node src/cli.js prune --delete --sheet-only  # Remove new login/paid directories from targets.yaml
+node src/cli.js report [--since DATE]    # Rebuild success/failure report from submissions.yaml
 node src/cli.js scout <url> --deep       # Discover form fields
 node src/cli.js awesome <repo>           # Generate awesome-list Issue
 node src/cli.js indexnow <url>           # Ping search engines

@@ -6,6 +6,8 @@ config.yml
 backlink-pilot.yaml
 .env
 screenshots/
+reports/
+*.bak
 *.log
 .DS_Store
 logs/

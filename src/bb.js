@@ -84,16 +84,59 @@ export class BbPage {
     }
   }
 
+  /**
+   * Run a bb-browser command scoped to this page's tab.
+   * bb-browser >= 0.14 requires --tab <id> on every page command
+   * (eval, fill, click, screenshot, snap, ...).
+   */
+  _bb(...args) {
+    if (!this._tabId) {
+      throw new Error('No tab open — call page.goto(url) first');
+    }
+    return bb(...args, '--tab', this._tabId);
+  }
+
   async goto(url, _opts = {}) {
-    const result = bb('open', url, '--tab');
-    // Extract tabId from output like "Tab ID: XXXX"
-    const tabMatch = result.match(/Tab ID:\s*(\S+)/);
-    if (tabMatch) {
+    let result;
+    if (this._tabId) {
+      // Reuse the existing tab so cookies/session context are kept
+      result = bb('goto', url, '--tab', this._tabId);
+    } else {
+      result = bb('open', url, '--tab');
+      // Extract tabId from output. Newer versions print "tab: XXXX",
+      // older ones "Tab ID: XXXX"
+      const tabMatch = result.match(/(?:Tab ID|tab):\s*(\S+)/i);
+      if (!tabMatch) {
+        throw new Error(`bb-browser open: could not determine tab id from output:\n${result}`);
+      }
       this._tabId = tabMatch[1];
       this._openedTabs.push(this._tabId);
     }
-    // Wait for page to settle (no networkidle equivalent)
-    await new Promise(r => setTimeout(r, 2000));
+    await this._waitForLoad(url);
+  }
+
+  /**
+   * Poll until the tab has left about:blank and document.readyState is
+   * 'complete' (bb-browser open/goto return before navigation finishes).
+   */
+  async _waitForLoad(url) {
+    const deadline = Date.now() + _bbTimeout;
+    while (Date.now() < deadline) {
+      let state = '';
+      try {
+        // Bot-check interstitials (Cloudflare, Vercel, ...) report
+        // readyState 'complete' too — keep waiting while they are showing.
+        state = this._bb('eval', `(() => {
+          if (location.href === 'about:blank') return 'blank';
+          if (/just a moment|checking your browser|verify you are human|attention required/i.test(document.title)) return 'challenge';
+          return document.readyState;
+        })()`);
+      } catch {}
+      if (state === 'complete') break;
+      await new Promise(r => setTimeout(r, 500));
+    }
+    // Give client-side frameworks a moment to hydrate
+    await new Promise(r => setTimeout(r, 1500));
   }
 
   /**
@@ -101,25 +144,26 @@ export class BbPage {
    */
   async cleanup() {
     for (const tabId of this._openedTabs) {
-      try { bb('tab', 'close', tabId); } catch {}
+      try { bb('close', '--tab', tabId); } catch {}
     }
     this._openedTabs = [];
+    this._tabId = null;
   }
 
   async fill(selectorOrRef, value) {
     if (selectorOrRef.startsWith('@')) {
-      bb('fill', selectorOrRef, value);
+      this._bb('fill', selectorOrRef, value);
     } else {
       // CSS selector — find element via eval, then use ref from snapshot
       const ref = await this._resolveRef(selectorOrRef);
-      if (ref) bb('fill', ref, value);
+      if (ref) this._bb('fill', ref, value);
       else throw new Error(`Element not found: ${selectorOrRef}`);
     }
   }
 
   async click(selectorOrRef) {
     if (selectorOrRef.startsWith('@')) {
-      bb('click', selectorOrRef);
+      this._bb('click', selectorOrRef);
     } else {
       // CSS selector — use evalClick with full user-event simulation
       // This dispatches mousedown/mouseup/click to work with React/Vue components
@@ -133,41 +177,37 @@ export class BbPage {
   }
 
   async textContent(selector) {
-    return bb('eval', `document.querySelector('${escapeJs(selector)}')?.textContent || ''`);
+    return this._bb('eval', `document.querySelector('${escapeJs(selector)}')?.textContent || ''`);
   }
 
   async content() {
-    return bb('eval', 'document.documentElement.outerHTML');
+    return this._bb('eval', 'document.documentElement.outerHTML');
   }
 
   url() {
-    return bb('eval', 'window.location.href');
+    return this._bb('eval', 'window.location.href');
   }
 
   async screenshot(path) {
-    if (path) bb('screenshot', path);
-    else bb('screenshot');
+    if (path) this._bb('screenshot', path);
+    else this._bb('screenshot');
   }
 
   /**
    * Get interactive snapshot — returns parsed accessibility tree text
    */
   async snapshot() {
-    return bb('snapshot', '-i');
+    return this._bb('snap', '-i');
   }
 
   /**
    * Playwright-compatible $(selector) — returns BbElementHandle or null
    */
   async $(selector) {
-    // Handle Playwright-specific :has-text() selector
-    if (selector.includes(':has-text(')) {
-      return this._queryHasText(selector);
-    }
-    const exists = bb('eval',
-      `!!document.querySelector('${escapeJs(selector)}')`);
-    if (exists === 'true') return new BbElementHandle(this, selector);
-    return null;
+    const expr = exprForSelector(selector);
+    if (!expr) return null;
+    const exists = this._bb('eval', `!!(${expr})`);
+    return exists === 'true' ? new BbElementHandle(this, expr) : null;
   }
 
   /**
@@ -179,36 +219,27 @@ export class BbPage {
 
   // --- Internal helpers ---
 
-  async _resolveRef(selector) {
-    // Take snapshot and find matching element ref
-    const snap = await this.snapshot();
-    // Try direct eval to check existence first
-    const exists = bb('eval',
-      `!!document.querySelector('${escapeJs(selector)}')`);
-    if (exists !== 'true') return null;
-
-    // Use eval to click/fill by selector directly
-    // bb-browser supports CSS selectors via eval workaround
-    return null; // fall through to eval-based approach
+  /**
+   * Evaluate a JS expression and get back a real JS value (null, bool,
+   * number, string, ...). bb-browser prints raw strings, so a string "null"
+   * and a real null are indistinguishable without JSON round-tripping.
+   */
+  _evalJson(expr) {
+    const out = this._bb('eval', `JSON.stringify((() => { try { return (${expr}); } catch { return null; } })() ?? null)`);
+    try { return JSON.parse(out); } catch { return out; }
   }
 
-  async _queryHasText(selector) {
-    // Parse "button:has-text("Submit")" → tag=button, text=Submit
-    const match = selector.match(/^(\w+):has-text\(["'](.+?)["']\)$/);
-    if (!match) return null;
-    const [, tag, text] = match;
-    const exists = bb('eval',
-      `!!Array.from(document.querySelectorAll('${tag}')).find(el => el.textContent.includes('${escapeJs(text)}'))`);
-    if (exists === 'true') return new BbElementHandle(this, selector, { tag, text });
+  async _resolveRef(selector) {
+    // bb-browser refs (@xxx) come from snapshots; CSS selectors are handled
+    // via eval instead, so always fall through to the eval-based approach.
     return null;
   }
 
-  /**
-   * Execute JS directly in page and fill/click by CSS selector
-   */
-  async evalFill(selector, value) {
-    bb('eval', `(() => {
-      const el = document.querySelector('${escapeJs(selector)}');
+  // --- Expression-based element ops (shared by handles/locators) ---
+
+  _fillExpr(expr, value) {
+    this._bb('eval', `(() => {
+      const el = ${expr};
       if (!el) return;
       el.focus();
       el.value = '${escapeJs(value)}';
@@ -217,17 +248,9 @@ export class BbPage {
     })()`);
   }
 
-  async evalClick(selector) {
-    bb('eval', `document.querySelector('${escapeJs(selector)}')?.click()`);
-  }
-
-  /**
-   * Click with full user-event simulation (mousedown → mouseup → click)
-   * Required for React/Vue components that don't respond to .click()
-   */
-  async evalClickReal(selector) {
-    bb('eval', `(() => {
-      const el = document.querySelector('${escapeJs(selector)}');
+  _clickExpr(expr) {
+    this._bb('eval', `(() => {
+      const el = ${expr};
       if (!el) return;
       el.dispatchEvent(new MouseEvent('mousedown', {bubbles:true,cancelable:true}));
       el.dispatchEvent(new MouseEvent('mouseup', {bubbles:true,cancelable:true}));
@@ -240,116 +263,146 @@ export class BbPage {
     })()`);
   }
 
+  _isVisibleExpr(expr) {
+    return this._evalJson(`(() => {
+      const el = ${expr};
+      if (!el) return false;
+      const r = el.getBoundingClientRect();
+      return r.width > 0 && r.height > 0;
+    })()`) === true;
+  }
+
+  // --- Selector-based convenience wrappers (public API) ---
+
+  async evalFill(selector, value) {
+    this._fillExpr(exprForSelector(selector), value);
+  }
+
+  async evalClick(selector) {
+    this._bb('eval', `(${exprForSelector(selector)})?.click()`);
+  }
+
+  /**
+   * Click with full user-event simulation (mousedown → mouseup → click)
+   * Required for React/Vue components that don't respond to .click()
+   */
+  async evalClickReal(selector) {
+    this._clickExpr(exprForSelector(selector));
+  }
+
   async evalClickByText(tag, text) {
-    bb('eval', `Array.from(document.querySelectorAll('${tag}')).find(el => el.textContent.includes('${escapeJs(text)}'))?.click()`);
+    this._bb('eval', `(${exprForHasText(tag, text)})?.click()`);
   }
 }
 
 /**
- * Element handle wrapping bb-browser eval calls
+ * Build a JS expression that evaluates to a single element for a selector.
+ * Supports plain CSS and Playwright's `tag:has-text("...")`.
+ * `root` is an optional JS expression for a parent element.
+ */
+function exprForSelector(selector, root = 'document') {
+  const m = selector.match(/^(\w+):has-text\(["'](.+?)["']\)$/);
+  if (m) return exprForHasText(m[1], m[2], root);
+  if (selector.includes(':has-text(')) return null;
+  return `${root}.querySelector('${escapeJs(selector)}')`;
+}
+
+function exprForHasText(tag, text, root = 'document') {
+  return `Array.from(${root}.querySelectorAll('${escapeJs(tag)}')).find(el => el.textContent.includes('${escapeJs(text)}'))`;
+}
+
+/**
+ * Element handle — wraps a JS expression that resolves to a DOM element
  */
 export class BbElementHandle {
-  constructor(page, selector, opts = {}) {
+  constructor(page, expr) {
     this._page = page;
-    this._selector = selector;
-    this._tag = opts.tag;
-    this._text = opts.text;
+    this._expr = expr;
   }
 
   async isVisible() {
-    if (this._tag && this._text) {
-      const result = this._page._config;
-      return bb('eval',
-        `(() => {
-          const el = Array.from(document.querySelectorAll('${this._tag}')).find(e => e.textContent.includes('${escapeJs(this._text)}'));
-          if (!el) return false;
-          const r = el.getBoundingClientRect();
-          return r.width > 0 && r.height > 0;
-        })()`
-      ) === 'true';
-    }
-    return bb('eval',
-      `(() => {
-        const el = document.querySelector('${escapeJs(this._selector)}');
-        if (!el) return false;
-        const r = el.getBoundingClientRect();
-        return r.width > 0 && r.height > 0;
-      })()`
-    ) === 'true';
+    return this._page._isVisibleExpr(this._expr);
   }
 
   async textContent() {
-    if (this._tag && this._text) {
-      return bb('eval',
-        `Array.from(document.querySelectorAll('${this._tag}')).find(e => e.textContent.includes('${escapeJs(this._text)}'))?.textContent || ''`);
-    }
-    return bb('eval',
-      `document.querySelector('${escapeJs(this._selector)}')?.textContent || ''`);
+    return this._page._evalJson(`(${this._expr})?.textContent`) ?? '';
   }
 
   async getAttribute(attr) {
-    return bb('eval',
-      `document.querySelector('${escapeJs(this._selector)}')?.getAttribute('${escapeJs(attr)}') || null`);
+    return this._page._evalJson(`(${this._expr})?.getAttribute('${escapeJs(attr)}')`);
   }
 
   async click() {
-    if (this._tag && this._text) {
-      await this._page.evalClickByText(this._tag, this._text);
-    } else {
-      await this._page.evalClickReal(this._selector);
-    }
+    // Same full user-event simulation as page.evalClickReal(), but on this
+    // handle's element expression (works for nth-match / scoped handles)
+    this._page._clickExpr(this._expr);
   }
 
   async fill(value) {
-    await this._page.evalFill(this._selector, value);
+    this._page._fillExpr(this._expr, value);
   }
 
   async evaluate(fn) {
-    // Simple evaluate — runs fn as string with el as argument
-    return bb('eval',
-      `(${fn.toString()})(document.querySelector('${escapeJs(this._selector)}'))`);
+    // Runs fn in the page with the element as argument
+    return this._page._evalJson(`(${fn.toString()})(${this._expr})`);
+  }
+
+  /**
+   * Scoped locator — Playwright-style handle.locator(selector)
+   */
+  locator(selector) {
+    return new BbLocator(this._page, selector, this._expr);
   }
 }
 
 /**
- * Locator wrapping bb-browser eval calls
+ * Locator — lazily resolves a selector (optionally scoped to a parent expr)
  */
 export class BbLocator {
-  constructor(page, selector) {
+  constructor(page, selector, root = 'document') {
     this._page = page;
     this._selector = selector;
+    this._root = root;
+  }
+
+  _expr() {
+    return exprForSelector(this._selector, this._root);
   }
 
   first() {
-    return new BbElementHandle(this._page, this._selector);
+    return new BbElementHandle(this._page, this._expr());
   }
 
   async all() {
-    const countStr = bb('eval',
-      `document.querySelectorAll('${escapeJs(this._selector)}').length`);
-    const count = parseInt(countStr, 10) || 0;
+    const count = this._page._evalJson(
+      `${this._root}.querySelectorAll('${escapeJs(this._selector)}').length`) || 0;
     return Array.from({ length: count }, (_, i) =>
       new BbElementHandle(this._page,
-        `document.querySelectorAll('${escapeJs(this._selector)}')[${i}]`)
+        `${this._root}.querySelectorAll('${escapeJs(this._selector)}')[${i}]`)
     );
   }
 
+  async count() {
+    return (await this.all()).length;
+  }
+
   async isVisible() {
-    return bb('eval',
-      `(() => {
-        const el = document.querySelector('${escapeJs(this._selector)}');
-        if (!el) return false;
-        const r = el.getBoundingClientRect();
-        return r.width > 0 && r.height > 0;
-      })()`
-    ) === 'true';
+    return this._page._isVisibleExpr(this._expr());
+  }
+
+  async textContent() {
+    return this.first().textContent();
+  }
+
+  async getAttribute(attr) {
+    return this.first().getAttribute(attr);
   }
 
   async fill(value) {
-    await this._page.evalFill(this._selector, value);
+    this._page._fillExpr(this._expr(), value);
   }
 
   async click() {
-    await this._page.evalClickReal(this._selector);
+    this._page._clickExpr(this._expr());
   }
 }
